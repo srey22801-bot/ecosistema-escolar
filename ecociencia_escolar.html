@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EcoCiencia Escolar: blog educativo sobre el cuidado del agua, reciclaje y energía.">
+<meta name="theme-color" content="#174d35">
 <title>EcoCiencia Escolar | Cuidemos el planeta</title>
 
 <style>
@@ -70,7 +72,7 @@ nav a:hover {
 .hero {
     min-height: 420px;
     background:
-    linear-gradient(rgba(10, 45, 27, .72), rgba(10, 45, 27, .72)),
+    linear-gradient(rgba(10,45,27,.72),rgba(10,45,27,.72)),
     url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85");
     background-size: cover;
     background-position: center;
@@ -117,7 +119,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* CONTENIDO PRINCIPAL */
+/* CONTENIDO */
 
 .contenedor {
     max-width: 1200px;
@@ -182,7 +184,7 @@ nav a:hover {
 
 .articulos {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 20px;
 }
 
@@ -224,10 +226,6 @@ nav a:hover {
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-}
-
-.leer:hover {
-    text-decoration: underline;
 }
 
 .sin-resultados {
@@ -305,8 +303,6 @@ nav a:hover {
 /* BUSCADOR */
 
 .buscador {
-    display: flex;
-    gap: 8px;
     margin-bottom: 22px;
 }
 
@@ -365,6 +361,7 @@ nav a:hover {
     border-radius: 10px;
     margin-bottom: 12px;
     border-left: 4px solid #80bd48;
+    overflow-wrap: anywhere;
 }
 
 .comentario strong {
@@ -395,9 +392,9 @@ footer span {
     color: #b9f27c;
 }
 
-/* DISEÑO PARA CELULARES */
+/* RESPONSIVE */
 
-@media(max-width: 800px) {
+@media(max-width:800px) {
     .contenedor {
         grid-template-columns: 1fr;
     }
@@ -426,7 +423,7 @@ footer span {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width:450px) {
     .hero {
         padding: 45px 7%;
     }
@@ -449,7 +446,9 @@ footer span {
 <header>
     <div class="logo">🌱 EcoCiencia Escolar</div>
 
-    <button class="menu-btn" id="menuBtn">☰ Menú</button>
+    <button class="menu-btn" id="menuBtn" type="button">
+        ☰ Menú
+    </button>
 
     <nav id="menu">
         <a href="#inicio">Inicio</a>
@@ -475,7 +474,7 @@ footer span {
     </div>
 </section>
 
-<!-- CUERPO PRINCIPAL Y BARRA LATERAL -->
+<!-- CUERPO PRINCIPAL -->
 
 <div class="contenedor">
 
@@ -592,7 +591,7 @@ footer span {
 
                 <img
                 src="https://images.unsplash.com/photo-1605600659873-d808a13e4d9a?auto=format&fit=crop&w=900&q=80"
-                alt="Plantas y naturaleza">
+                alt="Naturaleza y cuidado ambiental">
 
                 <div class="articulo-contenido">
                     <span class="etiqueta">Reciclaje</span>
@@ -739,12 +738,12 @@ footer span {
 <footer>
     <h3>🌱 EcoCiencia Escolar</h3>
     <p>Aprendiendo hoy para proteger el planeta mañana.</p>
-    <p>© 2026 EcoCiencia Escolar | Blog educativo</p>
+    <p>© 2026 <span>EcoCiencia Escolar</span> | Blog educativo</p>
 </footer>
 
 <script>
 
-// MENÚ DE NAVEGACIÓN
+// MENÚ
 
 const menuBtn = document.getElementById("menuBtn");
 const menu = document.getElementById("menu");
@@ -760,7 +759,7 @@ document.querySelectorAll("#menu a").forEach(function(enlace) {
 });
 
 
-// FILTRO DE CATEGORÍAS
+// FILTRO DE CATEGORÍAS Y BUSCADOR
 
 const botonesCategoria = document.querySelectorAll(".categoria");
 const articulos = document.querySelectorAll(".articulo");
@@ -771,7 +770,7 @@ let categoriaActual = "Todas";
 
 function filtrarArticulos() {
 
-    const texto = buscar.value.toLowerCase();
+    const texto = buscar.value.toLowerCase().trim();
     let visibles = 0;
 
     articulos.forEach(function(articulo) {
@@ -816,7 +815,7 @@ botonesCategoria.forEach(function(boton) {
 buscar.addEventListener("input", filtrarArticulos);
 
 
-// SISTEMA DE COMENTARIOS
+// COMENTARIOS LOCALES
 
 const formulario = document.getElementById("formComentario");
 const nombre = document.getElementById("nombre");
@@ -827,12 +826,12 @@ const aviso = document.getElementById("aviso");
 let comentarios = [];
 
 try {
-    comentarios = JSON.parse(
+    const guardados = JSON.parse(
         localStorage.getItem("ecoComentarios") || "[]"
     );
 
-    if (!Array.isArray(comentarios)) {
-        comentarios = [];
+    if (Array.isArray(guardados)) {
+        comentarios = guardados;
     }
 } catch (error) {
     comentarios = [];
@@ -844,7 +843,7 @@ function mostrarComentarios() {
 
     if (comentarios.length === 0) {
         listaComentarios.innerHTML =
-            '<p class="mensaje-vacio">Todavía no hay comentarios. ¡Sé el primero en participar!</p>';
+        '<p class="mensaje-vacio">Todavía no hay comentarios. ¡Sé el primero en participar!</p>';
         return;
     }
 
@@ -880,7 +879,7 @@ formulario.addEventListener("submit", function(evento) {
     if (nuevoNombre.length < 2 || nuevoMensaje.length < 3) {
         aviso.style.color = "#c62828";
         aviso.textContent =
-            "Escribe un nombre y un comentario válido.";
+        "Escribe un nombre y un comentario válido.";
         return;
     }
 
@@ -901,16 +900,16 @@ formulario.addEventListener("submit", function(evento) {
         comentarios.shift();
         aviso.style.color = "#c62828";
         aviso.textContent =
-            "No se pudo guardar el comentario en este navegador.";
+        "No se pudo guardar el comentario en este navegador.";
         return;
     }
 
     mostrarComentarios();
-
     formulario.reset();
 
     aviso.style.color = "#287b45";
-    aviso.textContent = "¡Tu comentario se publicó correctamente!";
+    aviso.textContent =
+    "¡Tu comentario se publicó correctamente!";
 });
 
 mostrarComentarios();
