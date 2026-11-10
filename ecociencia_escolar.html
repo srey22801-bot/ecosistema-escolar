@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoCiencia Escolar | Cuidemos el planeta</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f7f2;
+    color: #26352b;
+    line-height: 1.6;
+}
+
+/* ENCABEZADO */
+
+header {
+    background: #174d35;
+    color: white;
+    padding: 17px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b9f27c;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #b9f27c;
+}
+
+.menu-btn {
+    display: none;
+    background: #286c49;
+    color: white;
+    border: none;
+    padding: 9px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* PORTADA */
+
+.hero {
+    min-height: 420px;
+    background:
+    linear-gradient(rgba(10, 45, 27, .72), rgba(10, 45, 27, .72)),
+    url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 65px 9%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #b9f27c;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 21px;
+    background: #80bd48;
+    color: #17351f;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #b9f27c;
+    transform: translateY(-2px);
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.contenedor {
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.titulo-seccion {
+    color: #174d35;
+    margin-bottom: 20px;
+    font-size: 27px;
+    border-bottom: 3px solid #80bd48;
+    padding-bottom: 8px;
+}
+
+/* NOTICIA DESTACADA */
+
+.destacada {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #00000012;
+    margin-bottom: 35px;
+}
+
+.destacada img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.destacada-contenido {
+    padding: 25px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #e1f4d5;
+    color: #24633d;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.destacada h2 {
+    font-size: 27px;
+    color: #174d35;
+    margin-bottom: 12px;
+}
+
+.destacada p {
+    color: #58645b;
+    margin-bottom: 18px;
+}
+
+/* ARTÍCULOS */
+
+.articulos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.articulo {
+    background: white;
+    border-radius: 11px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #00000010;
+    transition: .3s;
+}
+
+.articulo:hover {
+    transform: translateY(-5px);
+}
+
+.articulo img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.articulo-contenido {
+    padding: 18px;
+}
+
+.articulo h3 {
+    color: #174d35;
+    margin-bottom: 9px;
+}
+
+.articulo p {
+    color: #647067;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.leer {
+    color: #287b45;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.leer:hover {
+    text-decoration: underline;
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* BARRA LATERAL */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.widget {
+    background: white;
+    border-radius: 11px;
+    padding: 22px;
+    box-shadow: 0 4px 15px #00000010;
+}
+
+.widget h3 {
+    color: #174d35;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #b9e79b;
+    padding-bottom: 8px;
+}
+
+.categoria {
+    display: block;
+    width: 100%;
+    background: #f1f7ed;
+    color: #245538;
+    padding: 11px;
+    margin-bottom: 9px;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.categoria:hover,
+.categoria.activa {
+    background: #d6edc8;
+    font-weight: bold;
+}
+
+.popular {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #26352b;
+    cursor: pointer;
+}
+
+.popular img {
+    width: 75px;
+    height: 65px;
+    border-radius: 7px;
+    object-fit: cover;
+}
+
+.popular strong {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* BUSCADOR */
+
+.buscador {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd8c9;
+    border-radius: 7px;
+    outline: none;
+}
+
+/* COMENTARIOS */
+
+.comentarios {
+    background: #e8f2e3;
+    padding: 55px 20px;
+}
+
+.comentarios-contenedor {
+    max-width: 850px;
+    margin: auto;
+}
+
+.formulario {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd8c9;
+    border-radius: 7px;
+    margin-bottom: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.formulario textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.comentario {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid #80bd48;
+}
+
+.comentario strong {
+    color: #174d35;
+}
+
+.comentario small {
+    display: block;
+    color: #89928b;
+    margin-bottom: 7px;
+}
+
+.mensaje-vacio {
+    color: #647067;
+    padding: 15px;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #123d2b;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer span {
+    color: #b9f27c;
+}
+
+/* DISEÑO PARA CELULARES */
+
+@media(max-width: 800px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .articulos {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        padding-top: 15px;
+    }
+
+    nav.mostrar {
+        display: flex;
+    }
+}
+
+@media(max-width: 450px) {
+    .hero {
+        padding: 45px 7%;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .destacada img {
+        height: 220px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENCABEZADO -->
+
+<header>
+    <div class="logo">🌱 EcoCiencia Escolar</div>
+
+    <button class="menu-btn" id="menuBtn">☰ Menú</button>
+
+    <nav id="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#destacada">Noticia destacada</a>
+        <a href="#articulos">Artículos</a>
+        <a href="#comentarios">Comentarios</a>
+    </nav>
+</header>
+
+<!-- PORTADA -->
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1>Un planeta limpio comienza con <span>pequeñas acciones</span></h1>
+
+        <p>
+            Bienvenidos a EcoCiencia Escolar, un blog educativo
+            creado por estudiantes para aprender a cuidar el agua,
+            reciclar y utilizar responsablemente la energía.
+        </p>
+
+        <a href="#articulos" class="btn">Explorar artículos</a>
+    </div>
+</section>
+
+<!-- CUERPO PRINCIPAL Y BARRA LATERAL -->
+
+<div class="contenedor">
+
+<main>
+
+    <!-- NOTICIA DESTACADA -->
+
+    <section id="destacada" style="padding:0;">
+
+        <h2 class="titulo-seccion">Noticia destacada</h2>
+
+        <article class="destacada">
+
+            <img
+            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=1200&q=85"
+            alt="Agua limpia de una cascada">
+
+            <div class="destacada-contenido">
+
+                <span class="etiqueta">CATEGORÍA: AGUA</span>
+
+                <h2>El agua es vida: aprendamos a cuidarla</h2>
+
+                <p>
+                    El agua es uno de los recursos naturales más
+                    importantes para todos los seres vivos. Sin
+                    embargo, muchas actividades humanas provocan
+                    su contaminación y desperdicio.
+                </p>
+
+                <p>
+                    Podemos ayudar cerrando los grifos cuando no
+                    los utilizamos, reparando las fugas y evitando
+                    arrojar basura a los ríos. Cada pequeño esfuerzo
+                    contribuye a proteger este recurso.
+                </p>
+
+                <a href="#articulos" class="btn">Ver más artículos</a>
+
+            </div>
+        </article>
+    </section>
+
+    <!-- ARTÍCULOS RECIENTES -->
+
+    <section id="articulos" style="padding:0;">
+
+        <h2 class="titulo-seccion">Artículos recientes</h2>
+
+        <div class="buscador">
+            <input
+            type="search"
+            id="buscar"
+            placeholder="Buscar artículos...">
+        </div>
+
+        <div class="articulos" id="listaArticulos">
+
+            <article class="articulo" data-categoria="Agua">
+
+                <img
+                src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=900&q=80"
+                alt="Agua del planeta">
+
+                <div class="articulo-contenido">
+                    <span class="etiqueta">Agua</span>
+                    <h3>5 formas de ahorrar agua en casa</h3>
+                    <p>
+                        Descubre cómo pequeños cambios en tus
+                        actividades diarias pueden ayudar a
+                        reducir el desperdicio de agua.
+                    </p>
+                    <a class="leer" href="#destacada">Leer artículo</a>
+                </div>
+            </article>
+
+            <article class="articulo" data-categoria="Reciclaje">
+
+                <img
+                src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80"
+                alt="Materiales reciclables">
+
+                <div class="articulo-contenido">
+                    <span class="etiqueta">Reciclaje</span>
+                    <h3>La importancia de separar los residuos</h3>
+                    <p>
+                        Aprende a clasificar los residuos y conoce
+                        cómo el reciclaje ayuda a disminuir
+                        la contaminación.
+                    </p>
+                    <a class="leer" href="#destacada">Leer artículo</a>
+                </div>
+            </article>
+
+            <article class="articulo" data-categoria="Energía">
+
+                <img
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80"
+                alt="Paneles solares">
+
+                <div class="articulo-contenido">
+                    <span class="etiqueta">Energía</span>
+                    <h3>La energía solar y sus beneficios</h3>
+                    <p>
+                        Conoce cómo los paneles solares aprovechan
+                        la luz del sol para producir electricidad
+                        de manera renovable.
+                    </p>
+                    <a class="leer" href="#destacada">Leer artículo</a>
+                </div>
+            </article>
+
+            <article class="articulo" data-categoria="Reciclaje">
+
+                <img
+                src="https://images.unsplash.com/photo-1605600659873-d808a13e4d9a?auto=format&fit=crop&w=900&q=80"
+                alt="Plantas y naturaleza">
+
+                <div class="articulo-contenido">
+                    <span class="etiqueta">Reciclaje</span>
+                    <h3>Ideas para reutilizar materiales</h3>
+                    <p>
+                        Las botellas, cajas y otros materiales
+                        pueden tener una segunda vida mediante
+                        actividades creativas.
+                    </p>
+                    <a class="leer" href="#destacada">Leer artículo</a>
+                </div>
+            </article>
+
+            <p class="sin-resultados" id="sinResultados"
+            style="display:none;">
+                No se encontraron artículos.
+            </p>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- BARRA LATERAL -->
+
+<aside class="sidebar">
+
+    <div class="widget">
+        <h3>📚 Categorías de lectura</h3>
+
+        <button class="categoria activa" data-filtro="Todas">
+            🌎 Todas las categorías
+        </button>
+
+        <button class="categoria" data-filtro="Agua">
+            💧 Agua
+        </button>
+
+        <button class="categoria" data-filtro="Reciclaje">
+            ♻️ Reciclaje
+        </button>
+
+        <button class="categoria" data-filtro="Energía">
+            ☀️ Energía
+        </button>
+    </div>
+
+    <div class="widget">
+        <h3>⭐ Artículos populares</h3>
+
+        <a class="popular" href="#destacada">
+            <img
+            src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=300&q=80"
+            alt="Agua">
+
+            <strong>El agua es vida: aprendamos a cuidarla</strong>
+        </a>
+
+        <a class="popular" href="#articulos">
+            <img
+            src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=300&q=80"
+            alt="Reciclaje">
+
+            <strong>La importancia de separar los residuos</strong>
+        </a>
+
+        <a class="popular" href="#articulos">
+            <img
+            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=300&q=80"
+            alt="Energía solar">
+
+            <strong>La energía solar y sus beneficios</strong>
+        </a>
+    </div>
+
+    <div class="widget">
+        <h3>🌱 Nuestro propósito</h3>
+
+        <p>
+            Informar y motivar a los estudiantes para que
+            participen en el cuidado del medioambiente
+            mediante hábitos responsables.
+        </p>
+    </div>
+
+</aside>
+</div>
+
+<!-- COMENTARIOS -->
+
+<section class="comentarios" id="comentarios">
+
+    <div class="comentarios-contenedor">
+
+        <h2 class="titulo-seccion">💬 Comparte tu opinión</h2>
+
+        <p style="margin-bottom:20px;">
+            ¿Qué acciones realizas para cuidar el planeta?
+            Escribe tu comentario y compártelo con la comunidad.
+        </p>
+
+        <form class="formulario" id="formComentario">
+
+            <label for="nombre">Tu nombre:</label>
+
+            <input
+            type="text"
+            id="nombre"
+            maxlength="40"
+            placeholder="Escribe tu nombre"
+            required>
+
+            <label for="mensaje">Tu comentario:</label>
+
+            <textarea
+            id="mensaje"
+            maxlength="500"
+            placeholder="Escribe tu opinión sobre el medioambiente..."
+            required></textarea>
+
+            <button class="btn" type="submit">
+                Publicar comentario
+            </button>
+
+            <p id="aviso" aria-live="polite"
+            style="margin-top:12px;"></p>
+
+        </form>
+
+        <h3 style="color:#174d35; margin-bottom:15px;">
+            Comentarios publicados
+        </h3>
+
+        <div id="listaComentarios">
+            <p class="mensaje-vacio">Todavía no hay comentarios.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PIE DE PÁGINA -->
+
+<footer>
+    <h3>🌱 EcoCiencia Escolar</h3>
+    <p>Aprendiendo hoy para proteger el planeta mañana.</p>
+    <p>© 2026 EcoCiencia Escolar | Blog educativo</p>
+</footer>
+
+<script>
+
+// MENÚ DE NAVEGACIÓN
+
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", function() {
+    menu.classList.toggle("mostrar");
+});
+
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("mostrar");
+    });
+});
+
+
+// FILTRO DE CATEGORÍAS
+
+const botonesCategoria = document.querySelectorAll(".categoria");
+const articulos = document.querySelectorAll(".articulo");
+const buscar = document.getElementById("buscar");
+const sinResultados = document.getElementById("sinResultados");
+
+let categoriaActual = "Todas";
+
+function filtrarArticulos() {
+
+    const texto = buscar.value.toLowerCase();
+    let visibles = 0;
+
+    articulos.forEach(function(articulo) {
+
+        const categoria = articulo.dataset.categoria;
+        const contenido = articulo.textContent.toLowerCase();
+
+        const coincideCategoria =
+            categoriaActual === "Todas" ||
+            categoria === categoriaActual;
+
+        const coincideTexto = contenido.includes(texto);
+
+        if (coincideCategoria && coincideTexto) {
+            articulo.style.display = "block";
+            visibles++;
+        } else {
+            articulo.style.display = "none";
+        }
+    });
+
+    sinResultados.style.display =
+        visibles === 0 ? "block" : "none";
+}
+
+botonesCategoria.forEach(function(boton) {
+
+    boton.addEventListener("click", function() {
+
+        categoriaActual = boton.dataset.filtro;
+
+        botonesCategoria.forEach(function(b) {
+            b.classList.remove("activa");
+        });
+
+        boton.classList.add("activa");
+
+        filtrarArticulos();
+    });
+});
+
+buscar.addEventListener("input", filtrarArticulos);
+
+
+// SISTEMA DE COMENTARIOS
+
+const formulario = document.getElementById("formComentario");
+const nombre = document.getElementById("nombre");
+const mensaje = document.getElementById("mensaje");
+const listaComentarios = document.getElementById("listaComentarios");
+const aviso = document.getElementById("aviso");
+
+let comentarios = [];
+
+try {
+    comentarios = JSON.parse(
+        localStorage.getItem("ecoComentarios") || "[]"
+    );
+
+    if (!Array.isArray(comentarios)) {
+        comentarios = [];
+    }
+} catch (error) {
+    comentarios = [];
+}
+
+function mostrarComentarios() {
+
+    listaComentarios.innerHTML = "";
+
+    if (comentarios.length === 0) {
+        listaComentarios.innerHTML =
+            '<p class="mensaje-vacio">Todavía no hay comentarios. ¡Sé el primero en participar!</p>';
+        return;
+    }
+
+    comentarios.forEach(function(comentario) {
+
+        const caja = document.createElement("div");
+        caja.className = "comentario";
+
+        const autor = document.createElement("strong");
+        autor.textContent = comentario.nombre;
+
+        const fecha = document.createElement("small");
+        fecha.textContent = comentario.fecha;
+
+        const texto = document.createElement("p");
+        texto.textContent = comentario.mensaje;
+
+        caja.appendChild(autor);
+        caja.appendChild(fecha);
+        caja.appendChild(texto);
+
+        listaComentarios.appendChild(caja);
+    });
+}
+
+formulario.addEventListener("submit", function(evento) {
+
+    evento.preventDefault();
+
+    const nuevoNombre = nombre.value.trim();
+    const nuevoMensaje = mensaje.value.trim();
+
+    if (nuevoNombre.length < 2 || nuevoMensaje.length < 3) {
+        aviso.style.color = "#c62828";
+        aviso.textContent =
+            "Escribe un nombre y un comentario válido.";
+        return;
+    }
+
+    const nuevoComentario = {
+        nombre: nuevoNombre,
+        mensaje: nuevoMensaje,
+        fecha: new Date().toLocaleString("es-PE")
+    };
+
+    comentarios.unshift(nuevoComentario);
+
+    try {
+        localStorage.setItem(
+            "ecoComentarios",
+            JSON.stringify(comentarios)
+        );
+    } catch (error) {
+        comentarios.shift();
+        aviso.style.color = "#c62828";
+        aviso.textContent =
+            "No se pudo guardar el comentario en este navegador.";
+        return;
+    }
+
+    mostrarComentarios();
+
+    formulario.reset();
+
+    aviso.style.color = "#287b45";
+    aviso.textContent = "¡Tu comentario se publicó correctamente!";
+});
+
+mostrarComentarios();
+
+</script>
+
+</body>
+</html>
